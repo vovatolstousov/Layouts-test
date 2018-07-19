@@ -1,0 +1,218 @@
+
+
+body {
+    background-color: #e1e1e1;
+    color: #5f5f5f;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+input, input:focus, input:active {
+    outline: 0;
+    padding: 3px 15px;
+    font-size: 18px;
+}
+
+main#vue-app {
+    padding: 20px 0;
+}
+
+.container {
+    /* min-width    : 2080px; */
+}
+
+.text-primary {
+    color: #0088cb!important;
+}
+
+.text-danger {
+    color: #df5374!important;
+}
+
+
+.text-dark {
+    color: #5f5f5f!important;
+}
+
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+
+#globalOrderBook {
+    background-color: #fff;
+    border-top-left-radius: 20px;
+}
+
+
+#realTime {
+    background-color: #fff;
+    border-top-right-radius: 20px;
+}
+
+
+.toolbar {
+    padding: 20px 40px;
+    border-bottom: 1px solid #cecece;
+}
+
+.toolbar .icons {
+    margin-top: 1px;
+    cursor: pointer;
+}
+
+.toolbar .icons  i:before {
+    font-size: 25px;
+    color: #5f5f5f;
+    position: absolute;
+}
+
+.header {
+    background-color: #f9fbfc;
+    border-bottom: 1px solid #cecece;
+    padding: 10px 0 10px 20px;
+    font-size: 22px;
+    color: #7f97b8;
+}
+
+.body-items-wrapper {
+    max-height: 580px;
+    overflow-x: hidden; 
+}
+
+.body-item {
+    padding: 2px 0 2px 25px;
+    border-bottom: 1px solid #cecece;
+}
+
+.spread {
+    font-size: 20px;
+    padding: 10px 0;
+    font-weight: bold;
+    background-color: #e1e1e1;
+}
+
+.spread .spread-key {
+    margin-left: 110px;
+}
+
+.spread .spread-value {
+    margin-left: 100px;
+}
+
+#action-section {
+    margin-top: 20px;
+    padding-bottom: 20px;
+    background-color: #fff;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.action-toolbar .tabs {
+    font-size: 20px;
+}
+
+.tabs ul > li {
+    position: relative;
+    color: #7d94b6;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.tabs ul > li.active {
+    color: #0088cb!important;
+}
+
+.tabs ul > li.active:before {
+    content: "";
+    position: absolute;
+    bottom: -22px;
+    left: 0;
+    right: 0;
+    border-radius: 20%;
+    border-bottom: 3px solid #0088cb;
+}
+
+.buy-eth-content,
+.sell-eth-content {
+    padding: 0 15px;
+    position: relative;
+}
+.buy-eth-content:after {
+    content: "";
+    position: absolute;
+    right: -12px;
+    top: 0;
+    background-color: #cecece;
+    height: 100%;
+    width: 1px;
+}
+
+.purchase-settings .ps-item {
+    padding: 5px 0;
+}
+
+.purchase-settings .ps-item label {
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.purchase-settings .ps-item input {
+    background-color: #f9fbfc;
+    border: 1px solid #e1e1e1;
+}
+
+.purchase-settings .ps-item .input-text {
+    width: 66px;
+    line-height: 35px;
+    border: 1px solid #e1e1e1;
+    background-color: #f9fbfc;
+}
+
+.range-slider {
+    position: relative;
+}
+
+.range-slider .cursor-wrapper {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    z-index: 1000;
+    top: -5px;
+    left: 35%;
+    background-color: #fff;
+}
+
+.range-slider .cursor-wrapper > .cursor {
+    width: 33px;
+    height: 33px;
+}
+
+.buy-eth-btn,
+.sell-eth-btn {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    text-align: center;
+    font-size: 26px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.buy-eth-btn {
+    background-color: #0089cb;
+}
+
+.sell-eth-btn {
+    background-color: #ff007a;
+}

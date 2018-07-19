@@ -1,0 +1,175 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+</head>
+<body>
+    <main id="vue-app">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div id="globalOrderBook">
+                        <div class="toolbar">
+                            <h3 class="text-primary">Global Order Book</h3>
+                        </div>
+                        <div class="header">
+                            <div class="row">
+                                <div class="col-lg-4">Price <span class="uppercase">(usdt)</span></div>
+                                <div class="col-lg-4">Amt. <span class="uppercase">(eth)</span></div>
+                                <div class="col-lg-4">Regional Ex.</div>
+                            </div>
+                        </div>
+                        <div class="body-items-wrapper">
+                            <div class="body-item dangers-item" v-for="item in mockDataRed">
+                                <div class="row">
+                                    <div class="col-lg-4 text-danger">{{item.price}}</span></div>
+                                    <div class="col-lg-4">{{item.amt}}</div>
+                                    <div class="col-lg-4 uppercase">{{item.regionalExData}}</div>
+                                </div>
+                            </div>
+                            <div class="spread text-center uppercase">
+                                <div class="row">
+                                    <div class="col-lg-12"></div>
+                                    <!-- <div class="col-lg-6"> -->
+                                        <span class="spread-key">spread</span>
+                                        
+                                    <!-- </div> -->
+                                    <!-- <div class="col-lg-6"> -->
+                                        <span class="spread-value">0.000057</span>
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+                            <div class="body-item primary-item" v-for="item in mockDataBlue">
+                                <div class="row">
+                                    <div class="col-lg-4 text-primary">{{item.price}}</span></div>
+                                    <div class="col-lg-4">{{item.amt}}</div>
+                                    <div class="col-lg-4 uppercase">{{item.regionalExData}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+                <div class="col-lg-6">
+                    <div id="realTime">
+                        <div class="toolbar d-flex justify-content-between">
+                            <h3 class="text-primary">{{toolbarTitles[currentToolbarTitle]}}</h3>
+                            <div class="icons">
+                                <div @click="changeToolbarTitle('+')" class="mb-1">
+                                    <i class="fas fa-sort-up"></i>
+                                </div>
+                                <div @click="changeToolbarTitle('-')">
+                                    <i class="fas fa-sort-down"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header">
+                            <div class="row">
+                                <div class="col-lg-4">Price <span class="uppercase">(usdt)</span></div>
+                                <div class="col-lg-4">Amt. <span class="uppercase">(eth)</span></div>
+                                <div class="col-lg-4">Regional Ex.</div>
+                            </div>
+                        </div>
+                        <div class="body-items-wrapper">
+                            <div class="body-item dangers-item" v-for="item in mockData">
+                                <div class="row">
+                                    <div class="col-lg-4" v-bind:class="{'text-danger': item.color == 'red', 'text-primary': item.color == 'blue'}">{{item.price}}</span></div>
+                                    <div class="col-lg-4">{{item.amt}}</div>
+                                    <div class="col-lg-4 uppercase">{{item.regionalExData}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="action-section">
+                <div class="row action-section-header">
+                    <div class="col-lg-12">
+                        <div class="toolbar action-toolbar d-flex justify-content-between align-items-center">
+                            <h3 class="text-primary">Orders</h3>
+                            <div class="tabs">
+                                <ul class="d-flex">
+                                    <li class="mr-3" v-bind:class="{'active': activeTab == 1}" @click="activeTab = 1">Market</li>
+                                    <li class="mr-3" v-bind:class="{'active': activeTab == 2}"  @click="activeTab = 2">Limit</li>
+                                    <li class="text" v-bind:class="{'active': activeTab == 3}" @click="activeTab = 3">Stop</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3 action-section-body">
+                    <div class="col-lg-6">
+                        <div class="buy-eth-content">
+                            <purchase-settings></purchase-settings>
+                            <div class="range-slider mt-5 mb-3">
+                                <img src="./images/axis.svg" width="100%" alt="">
+                                <div class="cursor-wrapper">
+                                    <img class="cursor" src="./images/cursor.svg" alt="">
+                                </div>
+                            </div>
+                            <button type="button" class="uppercase buy-eth-btn">Buy Eth</button>
+                        </div>
+                        
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="sell-eth-content">
+                            <div class="tabs">
+                                <div class="tab tab-1" v-if="activeTab === 1">
+                                    First Tab Selected
+                                </div>
+                                <div class="tab tab-2" v-if="activeTab === 2">
+                                    <purchase-settings></purchase-settings>
+                                </div>
+                                <div class="tab tab-3" v-if="activeTab === 3">
+                                    <span>Second Tab Selected</span>
+                                </div>
+                            </div>
+                            <div class="range-slider mt-5 mb-3">
+                                <img src="./images/axis.svg" width="100%" alt="">
+                                <div class="cursor-wrapper">
+                                    <img class="cursor" src="./images/cursor.svg" alt="">
+                                </div>
+                            </div>
+                            <button type="button" class="uppercase sell-eth-btn">Sell Eth</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <template id="ps">
+        <div class="purchase-settings">
+            <div class="ps-item amount d-flex justify-content-between align-items-center">
+                <label for="">Amount</label>
+                <div class="input-wrapper d-flex">
+                    <input type="number" class="text-dark" value="0.00000">
+                    <div class="input-text uppercase text-center text-muted">eth</div>
+                </div>
+            </div>
+            <div class="ps-item price-limit d-flex justify-content-between align-items-center">
+                <label for="">Price limit</label>
+                <div class="input-wrapper d-flex">
+                    <input type="number" class="text-dark" value="0.00000">
+                    <div class="input-text uppercase text-center text-muted">eth</div>
+                </div>
+            </div>
+            <div class="ps-item total d-flex justify-content-between align-items-center">
+                <label for="">Total</label>
+                <div class="input-wrapper d-flex">
+                    <input type="number" class="text-dark" value="0.00000">
+                    <div class="input-text uppercase text-center text-muted">USDT</div>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/script.js"></script>
+    
+</body>
+</html>
