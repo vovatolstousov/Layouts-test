@@ -26,10 +26,6 @@ main#vue-app {
     padding: 20px 0;
 }
 
-.container {
-    /* min-width    : 2080px; */
-}
-
 .text-primary {
     color: #0088cb!important;
 }
